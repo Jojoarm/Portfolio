@@ -16,6 +16,7 @@
   --color-blue-100: #2d2d38;
   --color-navy-50: #f0f9ff;
   --color-navy-500: #026aa2;
+  --color-whitesmoke: '#f5f5f5';
 }
 
 :root {
@@ -37,7 +38,33 @@ section {
   height: 100vh;
 }
 
+form {
+  label {
+    @apply block text-white-50 mb-2;
+  }
+
+  input,
+  textarea {
+    @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md;
+  }
+
+  a {
+    @apply w-full py-4 bg-white text-black font-semibold rounded-md flex justify-center items-center gap-2;
+
+    img {
+      @apply inline-block;
+    }
+  }
+}
+
 @layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
 }
 
 @keyframes bounceCustom {
@@ -51,6 +78,10 @@ section {
 
 .animate-bounce-custom {
   animation: bounceCustom 1s cubic-bezier(0.5, 0.05, 1, 0.8) infinite alternate;
+}
+
+.border-whitesmoke {
+  box-shadow: 2px 0px 6px rgba(245, 245, 245, 0.3);
 }
 
 /* Home text slider starts */
@@ -209,6 +240,30 @@ section {
 
   .cta-button .arrow-wrapper img {
     @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
+  }
+
+  .footer {
+    @apply my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center;
+  }
+
+  .footer-container {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0 w-full;
+  }
+
+  .footer p {
+    @apply text-center md:text-start;
+  }
+
+  .footer .socials {
+    @apply flex items-center justify-center gap-5;
+  }
+
+  .footer .socials .icon {
+    @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
+  }
+
+  .footer .socials img {
+    @apply inline-block;
   }
 }
 

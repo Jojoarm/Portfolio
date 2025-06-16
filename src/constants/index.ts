@@ -333,18 +333,22 @@ const socialImgs = [
   {
     name: 'insta',
     imgPath: '/images/insta.png',
+    url: 'https://www.instagram.com/dev_armani',
   },
   {
-    name: 'fb',
-    imgPath: '/images/fb.png',
+    name: 'github',
+    imgPath: '/images/github.png',
+    url: 'https://github.com/Jojoarm',
   },
   {
     name: 'x',
     imgPath: '/images/x.png',
+    url: 'https://x.com/jojoarmani24',
   },
   {
     name: 'linkedin',
     imgPath: '/images/linkedin.png',
+    url: 'linkedin.com/in/george-ofogba-075ba6203',
   },
 ];
 

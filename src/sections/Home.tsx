@@ -31,7 +31,7 @@ const Home = () => {
         id="bgvid"
         className="absolute w-full h-screen top-0 left-0 bottom-0 right-0 z-5 object-cover"
       >
-        <source src="/images/video.mp4" type="video/mp4" />
+        <source src="/images/video2.mp4" type="video/mp4" />
       </video>
       <div className="absolute top-0 left-0 z-10">
         <img src="/images/bg.png" alt="background" />
