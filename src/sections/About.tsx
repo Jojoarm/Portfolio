@@ -1,5 +1,5 @@
-import TechStack from '@/components/TechStack';
-import Title from '@/components/Title';
+import TechStack from '@/components/TechStack.tsx';
+import Title from '@/components/Title.tsx';
 
 const About = () => {
   return (

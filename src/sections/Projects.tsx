@@ -1,5 +1,5 @@
-import Title from '@/components/Title';
-import { projects } from '@/constants';
+import Title from '@/components/Title.tsx';
+import { projects } from '@/constants/index.ts';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

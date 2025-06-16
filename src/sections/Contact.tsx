@@ -1,8 +1,7 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import Title from '@/components/Title';
-import toast from 'react-hot-toast';
 import { Mail, MapPin, PhoneCall } from 'lucide-react';
+import Title from '@/components/Title.tsx';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -33,7 +32,8 @@ const Contact = () => {
       );
 
       setForm({ name: '', email: '', message: '' });
-      toast.success('Message sent, I will respond as soon as possible');
+      alert('Message sent, I will respond as soon as possible');
+      //   toast.success('Message sent, I will respond as soon as possible');
     } catch (error) {
       console.error('EmailJS Error:', error);
     } finally {
