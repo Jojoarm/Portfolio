@@ -35,7 +35,7 @@ const GlowCard: React.FC<GlowCardProps> = ({ children, index }) => {
         cardRefs.current[index] = el;
       }}
       onMouseMove={handleMouseMove(index)}
-      className="card border border-black-50 bg-black-100 timeline-card rounded-xl p-5 md:p-10  mb-5 break-inside-avoid-column"
+      className="card lg:w-4xl border border-black-50 bg-black-100 timeline-card rounded-xl p-5 md:p-10  mb-5 break-inside-avoid-column"
     >
       <div className="glow" />
       {children}

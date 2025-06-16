@@ -145,6 +145,80 @@ const techStackIcons: ModelProps[] = [
   },
 ];
 
+const projects = [
+  {
+    name: 'TripTeller',
+    description:
+      'A full-stack travel booking platform that allows users to explore and filter curated trips by destination, budget, and travel interests.',
+    liveLink: 'https://trip-teller-web.vercel.app/',
+    githubLink: 'https://github.com/Jojoarm/TripTeller',
+    image: '/images/project1.png',
+    techStack: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Recharts',
+    ],
+    features: [
+      'Trip filtering by location, budget, group size, and travel style.',
+      'Authentication with JWT and protected route handling.',
+      'Interactive admin dashboard with charts and statistics.',
+      'Responsive design and modular UI components.',
+    ],
+  },
+  {
+    name: 'Jerou Hospital Management App',
+    description:
+      'A modern hospital management system that helps clinics manage patients, appointments, and staff in a secure and efficient way.',
+    liveLink: 'https://jerou-hospital-management-app-frontend.onrender.com/',
+    githubLink:
+      'https://github.com/Jojoarm/Jerou-Hospital-Management-App-Frontend',
+    image: '/images/project2.png',
+    techStack: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'JWT',
+      'Zustand',
+    ],
+    features: [
+      'Patient and staff registration and management.',
+      'Doctor appointment scheduling and tracking.',
+      'Admin dashboard for analytics and user management.',
+      'Role-based access control for doctors, nurses, and admins.',
+    ],
+  },
+  {
+    name: 'JoJoEats',
+    description:
+      'An online food ordering platform built with the MERN stack, allowing users to browse restaurants, order meals, and track deliveries.',
+    liveLink: 'https://food-ordering-app-frontend-bvot.onrender.com/',
+    githubLink: 'https://github.com/Jojoarm/Food-ordering-app-frontend',
+    image: '/images/project3.png',
+    techStack: [
+      'React',
+      'Tailwind CSS',
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'JWT',
+      'Cloudinary',
+    ],
+    features: [
+      'User authentication and secure checkout flow.',
+      'Cart system with real-time updates and order tracking.',
+      'Restaurant and menu management for vendors.',
+      'Image uploads and optimized delivery dashboard.',
+    ],
+  },
+];
+
 const skillsCard = [
   {
     logoPath: '/images/logo1.png',
@@ -286,4 +360,5 @@ export {
   techStackIcons,
   techStackImgs,
   navLinks,
+  projects,
 };

@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import About from './sections/About';
 import Home from './sections/Home';
+import Projects from './sections/Projects';
 import Services from './sections/Services';
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
       <Home />
       <About />
       <Services />
+      <Projects />
     </div>
   );
 };

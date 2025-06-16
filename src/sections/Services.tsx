@@ -40,7 +40,7 @@ const Services = () => {
       <Title title="My Services" sub="🧑‍💼 What I offer" />
 
       <div className="mt-5 md:mt-10 relative">
-        <div className="relative z-50 xl:space-y-32 space-y-10">
+        <div className="relative z-50 space-y-5">
           {skillsCard.map((card, index) => (
             <div key={index} className="flex items-start">
               <div className="timeline-wrapper absolute top-0 left-5 md:left-10 h-full flex justify-center">

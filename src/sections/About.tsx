@@ -10,7 +10,7 @@ const About = () => {
         {/* Image for larger screens */}
         <div className="hidden w-full md:absolute md:w-1/4 right-0 bottom-0 md:block">
           <img
-            src="/images/dp.png"
+            src="/images/dp2.png"
             alt="Profile"
             className="w-1/2 float-right ml-4 mb-2 md:float-none md:w-[80%] md:h-[500px]"
           />
