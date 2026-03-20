@@ -140,11 +140,12 @@ const techStackIcons: ModelProps[] = [
   },
   {
     name: 'Node.js',
-    modelPath: '/tech-logos/node-transformed.glb',
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
+    modelPath: '/tech-logos/node-v1.glb',
+    scale: 1.5,
+    rotation: [0, 0, 0],
     floatOffset: 2,
   },
+
   {
     name: 'MongoDB',
     modelPath: '/tech-logos/mongodb.glb',
