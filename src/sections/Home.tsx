@@ -2,50 +2,105 @@ import gsap from 'gsap';
 import Button from '../components/Button';
 import { words } from '../constants';
 import { useGSAP } from '@gsap/react';
+import BgImage from '@/components/BgImage';
 
 const Home = () => {
   useGSAP(() => {
-    gsap.fromTo(
-      '.hero-text h1',
-      {
-        y: 50,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power2.inOut',
+    gsap.utils.toArray<HTMLElement>('.hero-section').forEach((section) => {
+      const tl = gsap.timeline();
+
+      const textContainers = section.querySelectorAll('.text-container');
+      const textDescriptions = section.querySelectorAll('.text-description');
+
+      if (textContainers.length > 0) {
+        tl.fromTo(
+          textContainers,
+          {
+            y: 40,
+            x: 100,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            x: 0,
+            opacity: 1,
+            duration: 2.2,
+            ease: 'power1.in',
+            // stagger: 0.5,
+            onComplete: () => {
+              const wrapper = document.querySelector<HTMLElement>('.wrapper');
+              if (wrapper) {
+                wrapper.style.animationPlayState = 'running';
+              }
+            },
+          },
+        );
       }
-    );
+
+      if (textDescriptions.length > 0) {
+        tl.fromTo(
+          textDescriptions,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.in',
+          },
+          0.5,
+        );
+      }
+    });
+
+    gsap.utils.toArray<HTMLElement>('.scale-in').forEach((element) => {
+      gsap.fromTo(
+        element,
+        { opacity: 0, scale: 0.5 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: 'power1.in',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top bottom',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+    });
   });
   return (
-    <div id="home" className="relative h-screen flex items-center">
-      <video
-        playsInline
-        autoPlay
-        poster="/images/background2.jpg"
-        muted
-        loop
-        id="bgvid"
-        className="absolute w-full h-screen top-0 left-0 bottom-0 right-0 z-5 object-cover"
-      >
-        <source src="/images/video2.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="background" />
-      </div>
-      <div className="absolute bottom-0 left-0 z-10">
-        <img src="/images/bg.png" alt="background" />
-      </div>
+    <section
+      id="home"
+      className="relative flex items-center w-full h-full min-h-screen hero-section"
+    >
+      {/* Large screens */}
+      <img
+        src="/images/hero-background-07.webp"
+        alt="Hero background"
+        className="absolute w-full h-full inset-0 z-5 object-cover object-center hidden md:block"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/90 to-black/85 z-10 hidden md:block" />
 
-      <div className=" xl:mt-20 mt-32 h-vh flex xl:items-center items-start justify-center text-white">
-        <div className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
+      {/* Small screens */}
+      <img
+        src="/images/hero-background-08.webp"
+        alt="Hero background"
+        className="absolute w-full h-full inset-0 z-5 object-cover object-right block md:hidden"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/90 to-black/55 z-10 block md:hidden" />
+
+      {/* decorative boxes */}
+      <BgImage top="0" left="0" />
+      <BgImage bottom="0" left="0" />
+
+      <div className="mt-10 md:mt-15 xl:mt-20  h-vh flex xl:items-center items-start justify-center w-full text-white">
+        <div className="flex flex-col justify-center w-full md:px-20 px-5">
           <div className="flex flex-col gap-7">
-            <div className="hero-text flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none">
+            <div className="text-container flex flex-col justify-center w-full max-w-4xl text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px]  font-semibold relative z-10 pointer-events-none">
               <h1>
-                Transforming
+                Turning
                 <span className="slide absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden">
                   <span className="wrapper">
                     {words.map((word, index) => (
@@ -56,7 +111,9 @@ const Home = () => {
                         <img
                           src={word.imgPath}
                           alt={word.text}
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
+                          width={48}
+                          height={48}
+                          className="xl:size-12 md:size-10 size-7 p-1 rounded-full bg-white-50 image-border"
                         />
                         <span>{word.text}</span>
                       </span>
@@ -64,25 +121,26 @@ const Home = () => {
                   </span>
                 </span>
               </h1>
-              <h1>into Real World Projects</h1>
-              <h1>that Deliver Results</h1>
+              <h1>into Scalable Digital Products that Solve Real Problems</h1>
+              {/* <h1>that Solve Real Problems</h1> */}
             </div>
-            <p className="text-white-50 md:text-lg relative z-10 pointer-events-none max-w-4xl">
-              Hi, I'm George — a web developer based in Nigeria with a strong
-              passion for crafting clean, efficient, and impactful code. Let's
-              collaborate and build something amazing together.
+            <p className="text-description text-white-50 md:text-lg relative z-10 pointer-events-none max-w-4xl">
+              Web developer and product builder focused on building high
+              performance web applications and intelligent systems that turn
+              complex ideas into scalable, real world solutions.
             </p>
-            <p className="z-10 text-gray-200">Welcome to my Portfolio</p>
-
+            <p className="text-description z-10 text-white ">
+              Explore my work, projects, and the systems I'm building.
+            </p>
             <Button
               className="md:w-80 md:h-16 w-60 h-12"
               id="button"
-              text="View My Work"
+              text="View My Projects"
             />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

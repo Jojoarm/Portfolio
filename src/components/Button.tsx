@@ -22,7 +22,7 @@ const Button = ({ text, className, id }: ButtonProps) => {
       }}
       className={`${className ?? ''} relative z-20 cursor-pointer`}
     >
-      <div className="cta-button group">
+      <div className="cta-button group scale-in ">
         <div className="bg-circle" />
         <p className="text">{text}</p>
         <div className="arrow-wrapper">

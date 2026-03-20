@@ -1,12 +1,6 @@
 import { useRef, type MouseEvent, type ReactNode } from 'react';
 
-// interface CardData {
-//   review: string;
-//   // Add more properties if needed (like `imgPath`, `title`, etc.)
-// }
-
 interface GlowCardProps {
-  //   card: CardData;
   children: ReactNode;
   index: number;
 }

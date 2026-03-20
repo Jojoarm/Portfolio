@@ -1,6 +1,6 @@
-import { Environment, Float, OrbitControls, useGLTF } from '@react-three/drei';
+import { Environment, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import * as THREE from 'three';
 
 export type ModelProps = {
@@ -8,45 +8,38 @@ export type ModelProps = {
   modelPath: string;
   scale: number;
   rotation: [number, number, number];
+  floatOffset?: number; // unique offset for out-of-sync movement
 };
 
-const SpinningModel = ({ model }: { model: ModelProps }) => {
-  const scene = useGLTF(model.modelPath);
+const FloatingModel = ({ model }: { model: ModelProps }) => {
+  const { scene } = useGLTF(model.modelPath);
   const groupRef = useRef<THREE.Group>(null);
 
-  useEffect(() => {
-    if (model.name === 'Interactive Developer') {
-      scene.scene.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === 'Object_5') {
-          child.material = new THREE.MeshStandardMaterial({ color: 'white' });
-        }
-      });
-    }
-  }, [model.name, scene.scene]);
-
-  useFrame((_, delta) => {
+  useFrame(({ clock }) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.5;
+      const t = clock.getElapsedTime() + (model.floatOffset || 0); // add offset
+
+      // faster, more noticeable floating
+      groupRef.current.position.y = Math.sin(t * 2) * 0.25; // up/down
+      groupRef.current.position.x = Math.cos(t * 1.5) * 0.15; // side-to-side
     }
   });
 
   return (
-    <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
-      <group ref={groupRef} scale={model.scale} rotation={model.rotation}>
-        <primitive object={scene.scene} />
-      </group>
-    </Float>
+    <group ref={groupRef} scale={model.scale} rotation={model.rotation}>
+      <primitive object={scene} />
+    </group>
   );
 };
 
 const TechIcon = ({ model }: { model: ModelProps }) => {
   return (
     <Canvas>
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <Environment preset="city" />
-      <OrbitControls enableZoom={false} />
-      <SpinningModel model={model} />
+      <OrbitControls enableZoom={false} enableRotate={false} />
+      <FloatingModel model={model} />
     </Canvas>
   );
 };

@@ -4,15 +4,19 @@ import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import Home from './sections/Home';
 import Projects from './sections/Projects';
-import Services from './sections/Services';
+import TechStack from './sections/TechStack';
+import Expertise from './sections/Expertise';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
     <div>
+      <Toaster />
       <Navbar />
       <Home />
       <About />
-      <Services />
+      <TechStack />
+      <Expertise />
       <Projects />
       <Contact />
       <Footer />

@@ -3,48 +3,74 @@ import Title from '@/components/Title';
 import { skillsCard } from '@/constants';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const Services = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+const Expertise = () => {
   useGSAP(() => {
-    gsap.to('.timeline', {
-      transformOrigin: 'bottom bottom',
-      ease: 'power1.inOut',
-      scrollTrigger: {
-        trigger: '.timeline',
-        start: 'top center',
-        end: '70% center',
-        onUpdate: (self) => {
-          gsap.to('.timeline', {
-            scaleY: 1 - self.progress,
-          });
-        },
-      },
+    const texts = gsap.utils.toArray<HTMLElement>('.expText');
+    const totalCards = texts.length;
+
+    // Set gradient line to start at 0 height
+    gsap.set('.gradient-line', {
+      scaleY: 0,
+      transformOrigin: 'top center',
     });
 
-    gsap.utils.toArray<HTMLElement>('.expText').forEach((text) => {
-      gsap.from(text, {
-        xPercent: 0,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: text,
-          start: 'top 60%',
+    texts.forEach((text, index) => {
+      gsap.fromTo(
+        text,
+        { opacity: 0, x: -30 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: text,
+            start: 'top 70%',
+            end: 'bottom 60%',
+            toggleActions: 'play none none reverse',
+            onUpdate: (self) => {
+              const progressPerCard = 1 / totalCards;
+              const totalProgress =
+                index * progressPerCard + self.progress * progressPerCard;
+
+              gsap.set('.gradient-line', {
+                scaleY: totalProgress,
+                transformOrigin: 'top center',
+              });
+            },
+            onLeaveBack: () => {
+              const progressPerCard = 1 / totalCards;
+              const totalProgress = index * progressPerCard;
+
+              gsap.set('.gradient-line', {
+                scaleY: totalProgress,
+                transformOrigin: 'top center',
+              });
+            },
+          },
         },
-      });
+      );
     });
   }, []);
 
   return (
-    <div id="services" className="section">
-      <Title title="My Services" sub="🧑‍💼 What I offer" />
+    <div id="expertise" className="section">
+      <Title
+        title="My Expertise"
+        sub="What I Bring to the Table"
+        icon="/svgs/tools-and-utensils-programmer.svg"
+        iconAlt="code icon"
+      />
 
       <div className="mt-5 md:mt-10 relative">
         <div className="relative z-50 space-y-5">
           {skillsCard.map((card, index) => (
             <div key={index} className="flex items-start">
               <div className="timeline-wrapper absolute top-0 left-5 md:left-10 h-full flex justify-center">
-                <div className="timeline absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-black" />
                 <div className="gradient-line w-1 h-full" />
               </div>
 
@@ -66,10 +92,10 @@ const Services = () => {
                       ))}
                     </ul>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      {card.tools.map((tool, index) => (
+                      {card.tools.map((tool, idx) => (
                         <p
-                          key={index}
-                          className={`text-xs md:text-sm px-2 py-1 border border-navy-500 shadow-white rounded bg-navy-50 text-navy-500 shadow`}
+                          key={idx}
+                          className="text-xs md:text-sm px-2 py-1 border border-navy-500 shadow-white rounded bg-navy-50 text-navy-500 shadow"
                         >
                           {tool}
                         </p>
@@ -86,4 +112,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Expertise;
