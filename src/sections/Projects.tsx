@@ -61,7 +61,7 @@ const Projects = () => {
                 }}
                 className="h-full grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10 justify-between"
               >
-                <div className="relative w-full h-[full] rounded-2xl image-border group cursor-pointer overflow-hidden">
+                <div className="relative w-full h-full min-h-[200px] rounded-2xl image-border group cursor-pointer overflow-hidden">
                   <img
                     src={project.image}
                     alt={`${project.name} project cover photo`}
