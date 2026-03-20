@@ -123,33 +123,6 @@ const techStackImgs = [
   },
 ];
 
-// const techStackIcons: ModelProps[] = [
-//   {
-//     name: 'React',
-//     modelPath: '/tech-logos/react-logo-v1.glb',
-//     scale: 1.5,
-//     rotation: [0, 0, 0],
-//   },
-//   {
-//     name: 'Node JS',
-//     modelPath: '/tech-logos/nextjs-logo.glb',
-//     scale: 1.8,
-//     rotation: [0, -Math.PI / 2, 0],
-//   },
-//   {
-//     name: 'Interactive Developer',
-//     modelPath: '/models/three.js-transformed.glb',
-//     scale: 0.05,
-//     rotation: [0, 0, 0],
-//   },
-//   {
-//     name: 'Project Manager',
-//     modelPath: '/models/git-svg-transformed.glb',
-//     scale: 0.05,
-//     rotation: [0, -Math.PI / 4, 0],
-//   },
-// ];
-
 const techStackIcons: ModelProps[] = [
   {
     name: 'React',

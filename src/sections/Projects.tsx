@@ -13,7 +13,7 @@ const Projects = () => {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useGSAP(() => {
-    projectRefs.current.forEach((card, index) => {
+    projectRefs.current.forEach((card) => {
       if (!card) return;
 
       gsap.fromTo(
@@ -23,10 +23,11 @@ const Projects = () => {
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: 0.3 * (index + 1),
           scrollTrigger: {
             trigger: card,
-            start: 'top bottom-=100',
+            start: 'top 70%',
+            end: 'bottom 60%',
+            toggleActions: 'play none none reverse',
           },
         },
       );

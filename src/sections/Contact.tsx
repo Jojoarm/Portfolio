@@ -3,9 +3,13 @@ import emailjs from '@emailjs/browser';
 import { Mail, MapPin, PhoneCall } from 'lucide-react';
 import Title from '@/components/Title.tsx';
 import toast from 'react-hot-toast';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
+  const formCardRef = useRef<HTMLDivElement>(null);
+  const infoCardRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: '',
@@ -41,6 +45,103 @@ const Contact = () => {
     }
   };
 
+  useGSAP(() => {
+    // Form card slides in from left
+    gsap.fromTo(
+      formCardRef.current,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: formCardRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+
+    // Form fields stagger up
+    gsap.fromTo(
+      '.form-field',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: formCardRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+
+    // Info card slides in from right
+    gsap.fromTo(
+      infoCardRef.current,
+      { opacity: 0, x: 50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: infoCardRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+
+    gsap.utils.toArray<HTMLElement>('.scale-in').forEach((element) => {
+      gsap.fromTo(
+        element,
+        { opacity: 0, scale: 0.5 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top bottom',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
+          },
+        },
+      );
+    });
+
+    // Contact items stagger up
+    gsap.fromTo(
+      '.contact-item',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out',
+        stagger: 0.15,
+        delay: 0.4,
+        scrollTrigger: {
+          trigger: infoCardRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
+        },
+      },
+    );
+  });
+
   return (
     <div id="contact" className="flex-center px-5 md:px-10 md:mt-40 mt-20">
       <div className="w-full h-full md:px-10 px-5">
@@ -53,13 +154,17 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-16">
           <div className="lg:col-span-8 h-full">
-            <div className="flex-center border border-black-50 bg-black-100 rounded-xl p-4 md:p-6 lg:p-10">
+            <div
+              ref={formCardRef}
+              style={{ opacity: 0 }}
+              className="flex-center border border-black-50 bg-black-100 rounded-xl p-4 md:p-6 lg:p-10"
+            >
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
                 className="w-full flex flex-col gap-7"
               >
-                <div>
+                <div className="form-field" style={{ opacity: 0 }}>
                   <label
                     htmlFor="name"
                     className="text-sm md:text-base font-outfit font-semibold"
@@ -77,7 +182,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-field" style={{ opacity: 0 }}>
                   <label
                     htmlFor="email"
                     className="text-sm md:text-base font-outfit font-semibold"
@@ -95,7 +200,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="form-field" style={{ opacity: 0 }}>
                   <label
                     htmlFor="message"
                     className="text-sm md:text-base font-outfit font-semibold"
@@ -113,7 +218,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} className="scale-in">
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
@@ -129,7 +234,11 @@ const Contact = () => {
           </div>
 
           <div className="lg:col-span-4 h-full">
-            <div className="bg-navy-500 w-full h-full hover:cursor-grab rounded-3xl overflow-hidden px-4 py-7 md:px-7 text-white">
+            <div
+              ref={infoCardRef}
+              style={{ opacity: 0 }}
+              className="bg-navy-500 w-full h-full hover:cursor-grab rounded-3xl overflow-hidden px-4 py-7 md:px-7 text-white"
+            >
               <div className="flex flex-col gap-2 md:gap-6">
                 <p className="md:mb-2 text-lg md:text-xl text-white-50 font-roboto font-medium">
                   GET IN TOUCH
@@ -140,10 +249,13 @@ const Contact = () => {
                     alt="chat-icon"
                     className="float-left size-7 md:size-10 animate-bounce"
                   />
-                  <p>Connect With Me Let’s Build Something Impactful</p>
+                  <p>Connect With Me Let's Build Something Impactful</p>
                 </div>
                 <div className="flex flex-col gap-3 md:gap-7">
-                  <div className="flex flex-col">
+                  <div
+                    className="contact-item flex flex-col"
+                    style={{ opacity: 0 }}
+                  >
                     <div className="flex items-center gap-2">
                       <MapPin className="text-white-50 size-5" />
                       <h3 className="font-semibold font-outfit text-lg md:text-2xl">
@@ -152,7 +264,10 @@ const Contact = () => {
                     </div>
                     <p className="text-base">Nigeria, Remote</p>
                   </div>
-                  <div className="flex flex-col">
+                  <div
+                    className="contact-item flex flex-col"
+                    style={{ opacity: 0 }}
+                  >
                     <div className="flex items-center gap-2">
                       <PhoneCall className="text-white-50 size-5" />
                       <h3 className="font-semibold font-outfit text-lg md:text-2xl">
@@ -161,9 +276,12 @@ const Contact = () => {
                     </div>
                     <p className="text-base">+2348066825721</p>
                   </div>
-                  <div className="flex flex-col">
+                  <div
+                    className="contact-item flex flex-col"
+                    style={{ opacity: 0 }}
+                  >
                     <div className="flex items-center gap-2">
-                      <Mail className="text-white-50  size-5" />
+                      <Mail className="text-white-50 size-5" />
                       <h3 className="font-semibold font-outfit text-lg md:text-2xl">
                         Send an Email
                       </h3>
