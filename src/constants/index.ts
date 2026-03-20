@@ -1,5 +1,3 @@
-import type { ModelProps } from '@/components/models/techLogosModels/TechIcon';
-
 const navLinks = [
   {
     name: 'About',
@@ -100,87 +98,15 @@ const abilities = [
   },
 ];
 
-const techStackImgs = [
-  {
-    name: 'React Developer',
-    imgPath: '/images/logos/react.png',
-  },
-  {
-    name: 'Python Developer',
-    imgPath: '/images/logos/python.svg',
-  },
-  {
-    name: 'Backend Developer',
-    imgPath: '/images/logos/node.png',
-  },
-  {
-    name: 'Interactive Developer',
-    imgPath: '/images/logos/three.png',
-  },
-  {
-    name: 'Project Manager',
-    imgPath: '/images/logos/git.svg',
-  },
-];
-
-const techStackIcons: ModelProps[] = [
-  {
-    name: 'React',
-    modelPath: '/tech-logos/react-logo-v1.glb',
-    scale: 1.5,
-    rotation: [0, 0, 0],
-    floatOffset: 0,
-  },
-  {
-    name: 'Next.js',
-    modelPath: '/tech-logos/nextjs-logo.glb',
-    scale: 1.5,
-    rotation: [0, 0, 0],
-    floatOffset: 1,
-  },
-  {
-    name: 'Node.js',
-    modelPath: '/tech-logos/node-v1.glb',
-    scale: 1.5,
-    rotation: [0, 0, 0],
-    floatOffset: 2,
-  },
-
-  {
-    name: 'MongoDB',
-    modelPath: '/tech-logos/mongodb.glb',
-    scale: 1.8,
-    rotation: [0, 0, 0],
-    floatOffset: 3,
-  },
-  {
-    name: 'PostgreSQL',
-    modelPath: '/tech-logos/postgresql.glb',
-    scale: 1.2,
-    rotation: [0, 0, 0],
-    floatOffset: 4,
-  },
-  {
-    name: 'Tailwind CSS',
-    modelPath: '/tech-logos/tailwindcss.glb',
-    scale: 1.5,
-    rotation: [0, 0, 0],
-    floatOffset: 5,
-  },
-  {
-    name: 'Typescript',
-    modelPath: '/tech-logos/typescript.glb',
-    scale: 1.2,
-    rotation: [0, 0, 0],
-    floatOffset: 6,
-  },
-  {
-    name: 'Github',
-    modelPath: '/tech-logos/github.glb',
-    scale: 1.5,
-    rotation: [0, 0, 0],
-    floatOffset: 7,
-  },
+const techStackIcons = [
+  { name: 'React', icon: '/svgs/react.svg' },
+  { name: 'Next.js', icon: '/svgs/nextjs.svg' },
+  { name: 'Node.js', icon: '/svgs/node-js.svg' },
+  { name: 'MongoDB', icon: '/svgs/mongodb.svg' },
+  { name: 'PostgreSQL', icon: '/svgs/postgresql.svg' },
+  { name: 'Tailwind CSS', icon: '/svgs/tailwindcss.svg' },
+  { name: 'TypeScript', icon: '/svgs/typescript.svg' },
+  { name: 'GitHub', icon: '/svgs/github.svg' },
 ];
 
 const projects = [
@@ -447,7 +373,6 @@ export {
   testimonials,
   socialImgs,
   techStackIcons,
-  techStackImgs,
   navLinks,
   projects,
 };

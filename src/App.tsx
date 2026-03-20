@@ -4,7 +4,7 @@ import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import Home from './sections/Home';
 import Projects from './sections/Projects';
-// import TechStack from './sections/TechStack';
+import TechStack from './sections/TechStack';
 import Expertise from './sections/Expertise';
 import { Toaster } from 'react-hot-toast';
 
@@ -15,7 +15,7 @@ const App = () => {
       <Navbar />
       <Home />
       <About />
-      {/* <TechStack /> */}
+      <TechStack />
       <Expertise />
       <Projects />
       <Contact />

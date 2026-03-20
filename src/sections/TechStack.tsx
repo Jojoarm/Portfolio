@@ -1,7 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import { techStackIcons } from '../constants';
 import gsap from 'gsap';
-import TechIcon from '../components/models/techLogosModels/TechIcon';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Title from '@/components/Title';
 
@@ -9,6 +8,7 @@ const TechStack = () => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Cards stagger in on scroll
     gsap.fromTo(
       '.tech-card',
       { y: 50, opacity: 0 },
@@ -17,14 +17,28 @@ const TechStack = () => {
         opacity: 1,
         duration: 1,
         ease: 'power2.inOut',
-        stagger: 0.2,
+        stagger: 0.15,
         scrollTrigger: {
           trigger: '#tech-stack',
           start: 'top center',
         },
       },
     );
+
+    // Each icon floats independently with a unique offset
+    document.querySelectorAll<HTMLElement>('.tech-icon').forEach((el, i) => {
+      gsap.to(el, {
+        y: -10,
+        x: 4,
+        duration: 1.8 + i * 0.15, // slightly different speed per icon
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: i * 0.2, // staggered start so they're out of sync
+      });
+    });
   }, []);
+
   return (
     <section
       id="tech-stack"
@@ -43,14 +57,18 @@ const TechStack = () => {
             <div
               key={icon.name}
               className="tech-card w-full border border-black-50 bg-black-100 overflow-hidden group xl:rounded-4xl rounded-lg"
+              style={{ opacity: 0 }}
             >
               <div className="absolute left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700" />
               <div className="flex flex-col md:justify-center items-center xl:gap-5 xl:h-[200px] overflow-hidden relative z-10 group-hover:cursor-grab">
-                <div className="flex justify-center items-center w-26 h-30  relative">
-                  <TechIcon model={icon} />
+                <div className="flex justify-center items-center w-26 h-30">
+                  <img
+                    src={icon.icon}
+                    alt={icon.name}
+                    className="tech-icon w-16 h-16 md:w-20 md:h-20 object-contain"
+                  />
                 </div>
-
-                <div className="px-5  w-full">
+                <div className="px-5 w-full">
                   <p className="text-base md:text-lg pb-5 xl:pb-0 font-semibold text-white-50 text-center">
                     {icon.name}
                   </p>

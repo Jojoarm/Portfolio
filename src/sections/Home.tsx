@@ -16,7 +16,7 @@ const Home = () => {
         tl.fromTo(
           textContainers,
           {
-            y: 40,
+            y: -40,
             x: 100,
             opacity: 0,
           },
@@ -25,8 +25,7 @@ const Home = () => {
             x: 0,
             opacity: 1,
             duration: 2.2,
-            ease: 'power2.in',
-            // stagger: 0.5,
+            ease: 'power4.out',
             onComplete: () => {
               const wrapper = document.querySelector<HTMLElement>('.wrapper');
               if (wrapper) {
@@ -59,7 +58,6 @@ const Home = () => {
           opacity: 1,
           scale: 1,
           duration: 1,
-          delay: 2.2, // wait for text-container animation to finish
           ease: 'power2.out',
           scrollTrigger: {
             trigger: element,
@@ -96,7 +94,7 @@ const Home = () => {
       <BgImage top="0" left="0" />
       <BgImage bottom="0" left="0" />
 
-      <div className="mt-10 md:mt-15 xl:mt-20  h-vh flex xl:items-center items-start justify-center w-full text-white">
+      <div className="mt-10 md:mt-15 xl:mt-20 h-full flex xl:items-center items-start justify-center w-full text-white">
         <div className="flex flex-col justify-center w-full md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="text-container flex flex-col justify-center w-full max-w-4xl text-[34px] md:text-[50px] lg:text-[60px] font-semibold relative z-10 pointer-events-none">
