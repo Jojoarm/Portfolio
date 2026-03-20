@@ -25,7 +25,7 @@ const Home = () => {
             x: 0,
             opacity: 1,
             duration: 2.2,
-            ease: 'power1.in',
+            ease: 'power2.in',
             // stagger: 0.5,
             onComplete: () => {
               const wrapper = document.querySelector<HTMLElement>('.wrapper');
@@ -59,7 +59,8 @@ const Home = () => {
           opacity: 1,
           scale: 1,
           duration: 1,
-          ease: 'power1.in',
+          delay: 2.2, // wait for text-container animation to finish
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: element,
             start: 'top bottom',

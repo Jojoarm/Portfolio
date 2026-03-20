@@ -247,23 +247,18 @@ form {
   .cta-button .bg-circle {
     @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
       w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
-      rounded-full bg-white-50 transition-[width,height,right] duration-500; /* was transition-all */
-  }
-
-  .cta-button .text {
-    @apply capitalize md:text-lg text-black font-semibold group-hover:transition-all group-hover:duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
+      rounded-full bg-white-50 transition-[width,height,right] duration-500;
   }
 
   .cta-button .text {
     @apply capitalize md:text-lg text-black font-semibold 
-      transition-[color,transform] duration-500  /* was transition-all */
+      transition-[color,transform] duration-500 
       group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
   }
 
   .cta-button .arrow-wrapper img {
     @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce 
-      group-hover:translate-y-0 transition-transform duration-500; /* was transition-all */
+      group-hover:translate-y-0 transition-transform duration-500;
   }
 
   .cta-button .arrow-wrapper img {
