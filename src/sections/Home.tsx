@@ -94,8 +94,8 @@ const Home = () => {
       <BgImage top="0" left="0" />
       <BgImage bottom="0" left="0" />
 
-      <div className="h-full flex xl:items-center items-start justify-center w-full text-white">
-        <div className="flex flex-col justify-center w-full md:px-20 px-5">
+      <div className="h-full lg:mt-10 xl:mt-20 w-full text-white">
+        <div className="flex flex-col w-full md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="text-container flex flex-col justify-center w-full max-w-4xl text-[34px] md:text-[50px] lg:text-[60px] font-semibold relative z-10 pointer-events-none">
               <h1>

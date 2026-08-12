@@ -111,6 +111,60 @@ const techStackIcons = [
 
 const projects = [
   {
+    name: 'UNCO Training & Consulting',
+    description:
+      'A professional governance, compliance, and leadership platform combining a corporate website with scalable training, course purchasing, and user account infrastructure.',
+    impact:
+      'Established a professional digital presence for UNCO while providing a scalable foundation for its consulting services, leadership programmes, and growing training platform.',
+    liveLink: 'https://www.uncoglobalmerchants.com/',
+    image: '/images/unco.webp',
+    techStack: [
+      'Next.js',
+      'TypeScript',
+      'PostgreSQL',
+      'Prisma',
+      'Better Auth',
+      'Paystack',
+      'Tailwind CSS',
+      'GSAP',
+    ],
+    features: [
+      'Professional corporate website showcasing consulting services, expertise, and leadership programmes.',
+      'Course catalogue and structured training platform with secure user authentication.',
+      'Protected course purchase flow with Paystack payment integration.',
+      'Scalable PostgreSQL database architecture using Prisma.',
+      'Dedicated pages for services, industries, consulting approach, leadership academy, and executive retreats.',
+    ],
+  },
+
+  {
+    name: 'Crestview Academy',
+    description:
+      'A full-stack school management platform combining a modern public website with authenticated dashboards for managing students, staff, academics, and core school operations.',
+    impact:
+      'Created a unified digital ecosystem that combines the school’s public presence with structured tools for managing academic and administrative operations.',
+    liveLink: 'https://crestview-academy.vercel.app/',
+    image: '/images/crestview.webp',
+    techStack: [
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'Express.js',
+      'PostgreSQL',
+      'Prisma',
+      'Tailwind CSS',
+    ],
+    features: [
+      'Modern public-facing school website with responsive and accessible interfaces.',
+      'Authenticated dashboards for school administration and staff.',
+      'Student, staff, class, arm, and subject management.',
+      'Academic session, term, timetable, attendance, and result management.',
+      'Fee management and report card generation workflows.',
+      'Dedicated Node.js backend and API architecture supporting the management platform.',
+    ],
+  },
+
+  {
     name: 'Edity',
     description:
       'An Edtech AI powered platform designed to support teachers with lesson planning, activity generation, and classroom insights through intelligent, curriculum aligned tools.',
@@ -181,7 +235,7 @@ const projects = [
     ],
     features: [
       'Secure donation processing using Flutterwave integration.',
-      'Dynamic blog system for articles and projects updates.',
+      'Dynamic blog system for articles and project updates.',
       'Authentication and session management with Clerk.',
       'Scalable architecture supporting both content and financial transactions.',
     ],
